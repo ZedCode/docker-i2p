@@ -1,5 +1,5 @@
-# i2ptorrent
-#    Torrent stuff on i2p (i2p2.de)
+# docker-i2p
+#    Torrent stuff on and browse i2p (https://geti2p.net)
 # (Not affiliated in any way with the creators or contributors of i2p)
 #
 #
