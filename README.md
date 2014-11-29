@@ -21,13 +21,13 @@ Then, you will need to figure out 3 ports and add them to your browser.
 The three ports are 8080, 8081 and 8443. You can figure out what ports
 got mapped to these ports by running `sudo docker ps`. For example:
 
-`$ sudo docker ps
+```$ sudo docker ps
 CONTAINER ID        IMAGE                  COMMAND
 CREATED             STATUS              PORTS
 NAMES
 2707c7a57439        anon/docker-i2p:beta   "/bin/bash /i2p/star   15
 minutes ago      Up 15 minutes       0.0.0.0:49156->8081/tcp,
-0.0.0.0:49157->8443/tcp, 0.0.0.0:49158->8080/tcp   hungry_mccarthy`
+0.0.0.0:49157->8443/tcp, 0.0.0.0:49158->8080/tcp   hungry_mccarthy```
 
 In this example, you can access the i2p control panel by connecting to
 127.0.0.149156. You will want to go into your browser settings and add a
