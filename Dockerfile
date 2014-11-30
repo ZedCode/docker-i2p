@@ -19,6 +19,7 @@ RUN wget https://download.i2p2.de/releases/0.9.16/i2pinstall_0.9.16.jar
 EXPOSE 8080
 EXPOSE 8081
 EXPOSE 8443
+EXPOSE 6668
 # Add a non-root user for i2p to run under
 RUN useradd -d /home/i2p -ms /bin/bash i2p && chown -R i2p:i2p /i2p*
 # Install i2p
