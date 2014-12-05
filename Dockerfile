@@ -14,7 +14,7 @@ ADD ./scripts/i2pinstall.sh /i2p/i2pinstall.sh
 ADD ./scripts/startUp.sh /i2p/startUp.sh
 RUN chmod +x /i2p/*
 # Download i2p
-RUN wget https://download.i2p2.de/releases/0.9.16/i2pinstall_0.9.16.jar
+RUN wget https://download.i2p2.de/releases/0.9.17/i2pinstall_0.9.17.jar
 # Expose service ports
 EXPOSE 8080
 EXPOSE 8081
