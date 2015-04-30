@@ -8,9 +8,9 @@ FROM ubuntu:14.04
 # Make sure repo is up to date
 RUN apt-get update && apt-get upgrade -y
 # Install i2p related packages
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends openjdk-7-jre expect curl wget socat -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends default-jre expect curl wget socat -y
 # Download i2p
-RUN wget https://download.i2p2.de/releases/0.9.17/i2pinstall_0.9.17.jar
+RUN wget https://download.i2p2.de/current/i2pinstall_0.9.19.jar
 # Expose service ports
 EXPOSE 8080
 EXPOSE 8081
