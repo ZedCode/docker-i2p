@@ -1,10 +1,10 @@
-## Dockerfile for I2P 
+## Dockerfile for I2P
 #
 #### Maintained by https://github.com/ZedCode
 FROM ubuntu:14.04
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install --no-install-recommends default-jre expect curl wget socat -y
-RUN wget https://download.i2p2.de/releases/0.9.26/i2pinstall_0.9.26.jar
+RUN wget https://download.i2p2.de/releases/0.9.34/i2pinstall_0.9.34.jar
 RUN useradd -d /home/i2p -ms /bin/bash i2p
 ADD ./scripts/i2pinstall.sh /i2p/i2pinstall.sh
 ADD ./scripts/startUp.sh /i2p/startUp.sh
