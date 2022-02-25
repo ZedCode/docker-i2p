@@ -1,10 +1,11 @@
 version: '2'
 services:
   i2pservice:
-    build: .
+    build: ./dockerfiles/i2p/
     ports:
-      - "8080"
-      - "8443"
-      - "8081"
+      - "8080:8080"
+      - "8443:8443"
+      - "8081:8081"
+      - "7657:7657"
     volumes:
       - ./i2p/:/home/i2p/.i2p
