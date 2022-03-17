@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# first, fix proxychains
+TOR_IP=`/usr/bin/host tor_svc | awk '{print $4}'`
+sed -i "s/__TOR_SVC_HOST__/${TOR_IP}/g" /etc/proxychains.conf
+
+# now tail /dev/null
+/usr/bin/tail -f /dev/null

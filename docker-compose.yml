@@ -1,4 +1,5 @@
-version: '2'
+version: '3'
+
 services:
   i2pservice:
     build: ./dockerfiles/i2p/
@@ -6,6 +7,17 @@ services:
       - "8080:8080"
       - "8443:8443"
       - "8081:8081"
-      - "7657:7657"
+      - "8666:8666"
+    container_name: i2p_service
     volumes:
       - ./i2p/:/home/i2p/.i2p
+  torsvc:
+    build: ./dockerfiles/tor/
+    container_name: tor_svc
+  i2putils:
+    depends_on: 
+      - torsvc
+    build: ./dockerfiles/utils/
+    container_name: i2p_utils
+    volumes:
+      - ./i2p/:/i2p-share

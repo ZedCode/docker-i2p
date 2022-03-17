@@ -1,6 +1,3 @@
-## Dockerfile for I2P
-#
-#### Maintained by https://github.com/ZedCode
 FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y
@@ -16,4 +13,5 @@ USER root
 EXPOSE 4444
 EXPOSE 4445
 EXPOSE 7657
+EXPOSE 6668
 CMD ["/bin/bash","/i2p/startUp.sh"]

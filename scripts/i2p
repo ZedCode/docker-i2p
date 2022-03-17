@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -u anon -ti i2p_utils /bin/bash

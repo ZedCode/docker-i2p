@@ -1,56 +1,61 @@
-docker-i2p
-==========
+# docker-i2p
 
-i2p dockerized
+i2p and tor dockerized Everything is built transparently right here. Use it as a basis for your own project.
 
-Requirements
-============
-Docker Engine is used in conjunction with docker-compose.
+## Requirements
 
-Basic Usage
-===========
+Docker Engine is used in conjunction with docker-compose. Make is used as a wrapper for everything.
 
-Simply run `docker-compose up -d` after cd'ing into the directory you git cloned:
+## Basic Usage
 
-You can now open a browser and browse to `localhost:[port that 8081 is mapped to]` to get to the
-i2p control panel. All of your preferences will be saved in the locally
-mounted i2p folder as well as any torrents you download through i2psnark.
+Start up the containers with:
 
-Building the image without docker-compose
-==================================
-
-If for whatever reason you would rather just build this yourself and use
-it as a normal docker container, you can do so the normal way:
-`docker build -t="[your user]/docker-i2p" .`
-
-Once the image is built, you can start it and start browsing i2p by
-running the following:
-
-`docker run -d -P [your user]/docker-i2p`
-
-Then, you will need to figure out 3 ports and add them to your browser.
-The three ports are 8080, 8081 and 8443. You can figure out what ports
-got mapped to these ports by running `docker ps`. For example:
-
-```
-$ sudo docker ps
-CONTAINER ID        IMAGE                  COMMAND
-CREATED             STATUS              PORTS
-NAMES
-2707c7a57439        zedcd/docker-i2p:beta   "/bin/bash /i2p/star   15
-minutes ago      Up 15 minutes       0.0.0.0:49156->8081/tcp,
-0.0.0.0:49157->8443/tcp, 0.0.0.0:49158->8080/tcp   hungry_mccarthy
+```sh
+make run
 ```
 
-In this example, you can access the i2p control panel by connecting to
-127.0.0.149156. You will want to go into your browser settings and add a
-new HTTP and HTTPS proxy. Use the port that docker has exposed for 8080
-as your HTTP proxy and 8443 for your HTTPS proxy. For more help
-configuring your browser, refer to
-https://geti2p.net/en/about/browser-config replacing the ports they list
-for the ones you found above.
+Exec into the service container with:
 
-Torrents
-========
-Torrents downloaded through i2psnark will be saved to `i2p/i2psnark/`
-inside of the project directory you git cloned this to.
+```sh
+make shell
+```
+
+Stop containers with:
+
+```sh
+make stop
+```
+
+### Installing CLI Helper
+
+```sh
+make install
+
+```
+
+then from anywhere you can run `i2p`, assuming that `~/.local/bin` is in your system path.
+
+## Tools Installed
+
+### WeeChat
+
+WeeChat is an IRC Client. Configure it to point to `i2p_service/8666` in order to connect to the i2p IRC server. To do this, launch `weechat` and then type in `/server add i2p i2p_service/8666` and then connect with `/connect i2p`.
+
+### ProxyChains
+
+Proxychains is configured to point to the IP address of the `tor_svc` container's IP address and port `9100`.
+
+### Lynx
+
+You can browse eepsites with Lynx by doing the following from a shell inside of the service container:
+
+```sh
+export http_proxy=http://i2p_service:8080
+export https_proxy=http://i2p_service:8443
+```
+
+Then start `lynx`.
+
+### Torrents
+
+You can download a torrent file with `lynx` and save it under `/i2p-share/i2psnark` and it'll begin download automatically. Downloaded torrents will be available in the `i2p/i2psnark` folder within this project. You can monitor progress by browsing to `localhost:8081`
